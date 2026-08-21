@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# 虚拟环境（这个必须忽略，几十上百MB，绝不能传）
+venv/
+.venv/
+
+# 数据库和日志（运行产物，不传）
+*.db
+*.log
+
+# 编辑器
+.idea/
+.vscode/
+
+# 环境变量/密钥
+.env
+
+# 临时文件
+.DS_Store

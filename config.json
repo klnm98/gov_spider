@@ -1,0 +1,66 @@
+{
+  "db_path": "gov_files.db",
+  "log_file": "scraper.log",
+  "base_url" : "https://www.hunan.gov.cn",
+
+
+  "list_selectors": {
+    "item": ".table > tbody > tr",
+    "title": "td:nth-child(2) > a",
+    "date": "td:nth-child(4)"
+  },
+
+  "detail_selector": {
+    "content": ".content p "
+  },
+
+  "keywords": ["政府", "通知"],
+
+  "request": {
+    "delay_min": 1.0,
+    "delay_max": 3.0,
+    "timeout": 10,
+    "retries": 3
+  },
+
+  "max_page": 34,
+
+  "schedule": {
+    "enabled": true,
+    "hour": 8,
+    "minute": 30
+  },
+
+  "table_structure": {
+    "table_name": "files",
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "constraints": "PRIMARY KEY AUTOINCREMENT"
+      },
+      {
+        "name": "title",
+        "type": "TEXT"
+      },
+      {
+        "name": "url",
+        "type": "TEXT",
+        "constraints": "UNIQUE"
+      },
+      {
+        "name": "publish_date",
+        "type": "TEXT"
+      },
+      {
+        "name": "content",
+        "type": "TEXT"
+      },
+      {
+        "name": "fetched_at",
+        "type": "TEXT",
+        "default": "datetime('now', 'localtime')"
+      }
+    ]
+  }
+}
